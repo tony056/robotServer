@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 var portNum = process.env.PORT || 3000;
 var mongo = require('mongoskin');
-var mongoUri = 'mongodb://localhost:27017/robotserver'; 
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/robotserver'; 
 var db = mongo.db(mongoUri, {native_parser:true});
 
 var app = express();

@@ -33,10 +33,11 @@ function addTime(event){
 		}
 	});
 	if(errorCount === 0){
+		//JSON newTime = new JSON();
 		var newTime = {
 			'username1': defaultName,
 			'username2': defaultName,
-			'exeTime': $('#addTime fieldset input#inputExeTime').val()
+			'exeTime': Number($('#addTime fieldset input#inputExeTime').val())
 		}
 		$.ajax({
 			type: 'POST',
@@ -70,9 +71,9 @@ function addRecord(event){
 		var newRecord = {
 			'username1': $('#addRecord fieldset input#inputUserName1').val(),
 			'username2': $('#addRecord fieldset input#inputUserName2').val(),
-			'exeTime': '-1'
+			'exeTime': Number(-1)
 		}
-
+		//newRecord['exeTime'] = parseInt(newRecord['exeTime'], 10);
 		$.ajax({
 			type: 'POST',
 			data: newRecord,
