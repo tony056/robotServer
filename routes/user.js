@@ -22,7 +22,7 @@ exports.orderlist = function(db){
 		// 	{'username1': 'aa', 'username2': 'bb', 'exeTime': 109}
 		// ];
 		// res.json(list);
-		db.collection('orderlist').find().sort({exeTime: 1}).limit(10).toArray(function(err, items){
+		db.collection('orderlist').find().sort({exeTime: 1}).toArray(function(err, items){
 			
 			res.json(items);
 		})
@@ -35,13 +35,14 @@ exports.addrecord = function(db){
 		if(req.body.exeTime === '-1'){
 			//add username
 			console.log('add username');
-			db.collection('orderlist').update({username1: 'you', username2: 'you'}, {$set:{username1: req.body.username1, username2: req.body.username2}}, function(err, result){
+			db.collection('orderlist').update({username1: 'you', username2: 'teammate'}, {$set:{username1: req.body.username1, username2: req.body.username2}}, function(err, result){
 				res.send(
 					(err === null) ? {msg: ''} : {msg: err}
 				);
 			})
 
 		}else{
+			//new a json object, only time value is correct
 			var data = {
 				'username1': '',
 				'username2': '',

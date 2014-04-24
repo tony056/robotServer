@@ -16,6 +16,7 @@ var db = mongo.db(mongoUri, {native_parser:true});
 var app = express();
 
 // all environments
+
 app.set('port', portNum);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

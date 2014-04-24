@@ -1,11 +1,12 @@
 var orderListData = [];
 
-$(document).ready(function(){
+(function(){
 	populateTable();
 	$('#btnAddRecord').on('click', addRecord);
 	$('#btnAddTime').on('click', addTime);
 	$('#orderList table tbody').on('click', 'td a.linkdeleterecord', deleteRecord);
-});
+
+
 
 function populateTable(){
 	var tableContent = '';
@@ -14,14 +15,28 @@ function populateTable(){
 		orderListData = data;
 		$.each(data, function(){
 			tableContent += '<tr>';
-		    tableContent += '<td><a href="#" class="linkshowuser" rel="' + this.username1 + '" title="Show Details">' + this.username1 + '</td>';
+		    tableContent += '<td><input type="text" class="pending" value = "' + this.username1 + '"><span></span></td>';
+		    tableContent += '<td><input type="text" class="pending" value = "' + this.username2 + '"><span></span></td>';
 		    tableContent += '<td>' + this.exeTime + '</td>';
 		    tableContent += '<td><a href="#" class="linkdeleterecord" rel="' + this._id + '">delete</a></td>';
 		    tableContent += '</tr>';
 		});
 		$('#orderList table tbody').html(tableContent);
+		//$('.hide').hide();
 	});
 };
+
+$('#orderList').on('keyup','input', function(c){
+	if(c.which === 13){
+		//console.log("fjasldfjklsadjf");
+		var done = $(this);
+		var parent = done.parents('td');
+		parent.find('span').text(done.val());
+		done.removeClass('pending');
+		$(this).hide();
+
+	}
+});
 
 function addTime(event){
 	event.preventDefault();
@@ -130,3 +145,5 @@ function deleteRecord(event) {
   }
 
 };
+
+}());
