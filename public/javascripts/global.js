@@ -17,20 +17,25 @@ function populateTable(){
 			tableContent += '<tr>';
 			console.log('1:'+this.done1+' ,2: '+ this.done2);
 			if(!this.done1){
-		    	tableContent += '<td><input  position="1" id= "' + this._id + '" type="text" class="pending" value = "' + this.username1 + '"><span></span></td>';
+		    	tableContent += '<td><input  position="1" id= "' + this._id + '" type="text" class="input-medium search-query" value = "' + this.username1 + '"><span></span></td>';
 		    }else{
 		    	tableContent += '<td><span>' + this.username1 + '</span></td>';
 		    }
 		    if(!this.done2){
-		    	tableContent += '<td><input  position="2" id= "' + this._id + '" type="text" class="pending" value = "' + this.username2 + '"><span></span></td>';
+		    	tableContent += '<td><input  position="2" id= "' + this._id + '" type="text" class="input-medium search-query" value = "' + this.username2 + '"><span></span></td>';
 		    }else{
 		    	tableContent += '<td><span>' + this.username2 + '</span></td>';
 		    }
-		    tableContent += '<td>' + this.exeTime + '</td>';
+		    if(this.exeTime < 0){
+		    	tableContent += '<td>' + this.exeTime + '</td>';
+			}else{
+				tableContent += '<td>' + this.exeTime + '</td>';
+			}
 		    tableContent += '<td><button type="button" class="linkdeleterecord btn btn-default btn-lg" rel="' + this._id + '">delete</a></td>';
 		    tableContent += '</tr>';
 		});
 		$('#orderList table tbody').html(tableContent);
+		$('#orderList table tbody').find('input').toArray()[0].focus();
 	});
 };
 

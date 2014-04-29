@@ -2,29 +2,28 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
 
   #wrapper
-    h2 Leaderboard
+    //h2 Leaderboard
     #orderList
       table.table.table-striped
         thead
           th Player 1
           th Player 2
           th Play Time
-          th Delete
+          th 
         tbody
-    h2 Add User
-    #addRecord
-      fieldset
-        input#inputUserName1(type='text', placeholder='Username1')
-        input#inputUserName2(type='text', placeholder='UserName2')
-        button#btnAddRecord Add Record
-    h2 Add Time
-    #addTime
-      fieldset
-        input#inputExeTime(type='text', placeholder='ExeTime')
-        button#btnAddTime Add Time
+    //- h2 Add User
+    //- #addRecord
+    //-   fieldset
+    //-     input#inputUserName1(type='text', placeholder='Username1')
+    //-     input#inputUserName2(type='text', placeholder='UserName2')
+    //-     button#btnAddRecord Add Record
+    //- h2 Add Time
+    //- #addTime
+    //-   fieldset
+    //-     input#inputExeTime(type='text', placeholder='ExeTime')
+    //-     button#btnAddTime Add Time
         
 
 
