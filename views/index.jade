@@ -5,26 +5,26 @@ block content
   p Welcome to #{title}
 
   #wrapper
-    h2 Order List
+    h2 Leaderboard
     #orderList
-      table
+      table.table.table-striped
         thead
           th Player 1
           th Player 2
           th Play Time
-          th Delete?
+          th Delete
         tbody
-    //h2 Add User
-    //- #addRecord
-    //-   fieldset
-    //-     input#inputUserName1(type='text', placeholder='Username1')
-    //-     input#inputUserName2(type='text', placeholder='UserName2')
-    //-     button#btnAddRecord Add Record
-    //- h2 Add Time
-    //- #addTime
-    //-   fieldset
-    //-     input#inputExeTime(type='text', placeholder='ExeTime')
-    //-     button#btnAddTime Add Time
+    h2 Add User
+    #addRecord
+      fieldset
+        input#inputUserName1(type='text', placeholder='Username1')
+        input#inputUserName2(type='text', placeholder='UserName2')
+        button#btnAddRecord Add Record
+    h2 Add Time
+    #addTime
+      fieldset
+        input#inputExeTime(type='text', placeholder='ExeTime')
+        button#btnAddTime Add Time
         
 
 

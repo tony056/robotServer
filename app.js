@@ -39,6 +39,7 @@ app.get('/', routes.index);
 app.get('/orderlist', user.orderlist(db));
 
 app.post('/addrecord', user.addrecord(db));
+app.post('/revisedata', user.revisedata(db));
 app.delete('/deleterecord/:id', user.deleterecord(db));
 app.delete('/clean', user.clean(db));
 

@@ -35,10 +35,22 @@ exports.addrecord = function(db){
 		if(req.body.exeTime === '-1'){
 			//add username
 			console.log('add username');
-			db.collection('orderlist').update({username1: 'you', username2: 'teammate'}, {$set:{username1: req.body.username1, username2: req.body.username2}}, function(err, result){
+			/*db.collection('orderlist').update({username1: 'you', username2: 'teammate'}, {$set:{username1: req.body.username1, username2: req.body.username2, done: req.body.done}}, function(err, result){
 				res.send(
 					(err === null) ? {msg: ''} : {msg: err}
 				);
+			})*/
+			var data = {
+				'username1': req.body.username1,
+				'username2': req.body.username2,
+				'exeTime': -1,
+				'done1': false,
+				'done2': false
+			};
+			db.collection('orderlist').insert(data, function(err, result){
+				res.send(
+	        		(err === null) ? { msg: '' } : { msg: err }
+      			);
 			})
 
 		}else{
@@ -46,7 +58,9 @@ exports.addrecord = function(db){
 			var data = {
 				'username1': '',
 				'username2': '',
-				'exeTime': ''
+				'exeTime': '',
+				'done1': false,
+				'done2': false
 			};
 			if(req.body.username1 != null && req.body.username2 != null && req.body.exeTime != null){
 				data['username1'] = req.body.username1;
@@ -80,3 +94,27 @@ exports.deleterecord = function(db){
 		});
 	}
 };
+
+exports.revisedata = function(db){
+	return function(req, res){
+		var dataToRevise = req.body.id;
+		console.log(dataToRevise);
+		var mongodb = require('mongodb');
+		var ObjectId = mongodb.ObjectID;
+		db.collection('orderlist').update({ _id: ObjectId(dataToRevise)}, 
+			{$set: {
+				username1: req.body.username1, 
+				username2: req.body.username2, 
+				done1: req.body.done1, 
+				done2: req.body.done2
+				}
+			}, 
+			function(err, result){
+				console.log(result);
+				res.send(
+					(err === null) ? {msg: ''} : {msg: err}
+				);
+		});
+		console.log('1:'+req.body.done1+' ,2: '+ req.body.done2);
+	}
+}
